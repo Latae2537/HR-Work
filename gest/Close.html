@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="Close.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Chose Task</h1>
+        <form action="submit_task.html" method="post" enctype="multipart/form-data">
+            <!-- <label for="taskName">Task Name:</label> -->
+            <!-- <input type="text" id="taskName" name="taskName" required> -->
+            
+            <!-- <label for="assignee">Assign To:</label> -->
+            <!-- <input type="text" id="assignee" name="assignee" required> -->
+            
+            <!-- <label for="dueDate">Due Date:</label> -->
+            <!-- <input type="date" id="dueDate" name="dueDate" required> -->
+            
+            <!-- <label for="description">Description:</label> -->
+            <!-- <textarea id="description" name="description" rows="4" required></textarea> -->
+            
+            <label for="fileUpload">Upload File:</label>
+            <input type="file" id="fileUpload" name="fileUpload">
+            
+            <button onclick="add()">Add Task</button>
+        </form>
+    </div>
+    <div class="container">
+        <h1>Task List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Task Name</th>
+                    <th>Assignee</th>
+                    <th>Due Date</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Task 1</td>
+                    <td>John Doe</td>
+                    <td>2023-12-31</td>
+                    <td>This is a sample task description.</td>
+                    <td>Chose</td>
+                </tr>
+                <!-- More task rows can be added here -->
+            </tbody>
+            <script>
+                function  add() {
+                    Swal.fire("บันทึกสำเร็จ");
+                }
+            </script>
+        </table>
+    </div>
+</body>
+</html>
