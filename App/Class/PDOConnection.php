@@ -15,24 +15,28 @@ use PDOException;
 
         public function __construct($connectionStatus = false)
         {
-
-            switch ($this->_typeDatabase) {
-                case 'MYSQL':
-                        $this->OpenConnectionMysql();
+            if($connectionStatus == false):
+                return;
+            else:
+                switch ($this->_typeDatabase) {
+                    case 'MYSQL':
+                            $this->OpenConnectionMysql();
+                        break;
+                    case 'SQLSERVER':
+                            $this->OpenConnectionSQLSERVER();
+                        break;
+                    default:
+                        try {
+                            throw new Exception("Not in mysql and sql server", 1);
+                        } catch (\Throwable $err) {
+                            echo "Error : ".$err->getMessage();
+                        }
+                          
                     break;
-                case 'MSSQL':
-                        $this->OpenConnectionMssql();
-                    break;
-                default:
-                    try {
-                        throw new Exception("Not in mysql and sql server", 1);
-                    } catch (\Throwable $err) {
-                        echo "Error : ".$err->getMessage();
-                    }
-                      
-                break;
-            }
-
+                }
+    
+            endif;
+         
         }
         public function OpenConnectionMysql() {
            try {
@@ -44,7 +48,7 @@ use PDOException;
                 echo  $err->getMessage();
            } 
         }
-        public function OpenConnectionMssql() {
+        public function OpenConnectionSQLSERVER() {
             try {
              $pdo = new PDO("mysql:host=$this->_hostname;dbname=$this->_username;",$this->_username,$this->_password);
              $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

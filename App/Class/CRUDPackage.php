@@ -8,9 +8,12 @@ use \Class\Connection\PDOConnection;
 
 class CRUDPackage extends PDOConnection
 {
+    public function __construct(){
+        parent::__construct(true);
+    }
 
     public function Insert(){
-
+        // $this->pdo->
     }
     public function Update(){
 
